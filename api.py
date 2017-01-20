@@ -6,11 +6,17 @@ from config import CONFIG
 from data_models import Account, Transaction, Bank, User, Tag
 
 app = Flask(__name__)
-api = Api(app)
+api = Api(app, prefix='/api')
 engine = create_engine(CONFIG['database_engine'])
 Session = sessionmaker(bind=engine)
 session = Session()
 
+
+class IndexAPI(Resource):
+    def get(self):
+        return {
+            'data': 'success'
+        }
 
 class AccountsAPI(Resource):
     @marshal_with(Account.BASE_FIELDS)
@@ -89,6 +95,7 @@ class TagAPI(Resource):
         bank = session.query(Bank).get(id)
         return bank
 
+api.add_resource(IndexAPI, '/')
 api.add_resource(AccountsAPI, '/accounts')
 api.add_resource(AccountAPI, '/accounts/<int:id>')
 api.add_resource(TransactionsAPI, '/transactions')
