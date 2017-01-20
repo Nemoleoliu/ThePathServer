@@ -5,3 +5,4 @@ flask
 flask-script
 flask-restful
 enum34
+uWSGI
