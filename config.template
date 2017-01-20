@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+CONFIG = {
+    ##############
+    #
+    # Database
+    #
+    ##############
+    "database": {
+        "host": "",
+        "port": "",
+        "user": "",
+        "password": "",
+        "db": "",
+        "charset": "",
+    },
+}
+
+CONFIG['database_engine'] = 'mysql+mysqldb://{user}:{password}@{host}:{port}/{db}'.format(**CONFIG['database'])

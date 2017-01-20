@@ -1,0 +1,7 @@
+bs4
+MySQL-python
+sqlalchemy
+flask
+flask-script
+flask-restful
+enum34
